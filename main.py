@@ -1,37 +1,13 @@
-def calculate():
-    while True:
-        print("\n--- Calculator ---")
-        print("1. Add")
-        print("2. Subtract")
-        print("3. Multiply")
-        print("4. Divide")
-        print("5. Exit")
+import math
+def circle_properties(radius):
+    # Calculate area using formula: πr²
+    area = math.pi * radius ** 2
+    # Calculate perimeter (circumference) using formula: 2πr
+    perimeter = 2 * math.pi * radius
+    return area, perimeter
+# Example usage
+r = float(input("Enter the radius of the circle: "))
+area, perimeter = circle_properties(r)
 
-        choice = input("Select operation (1-5): ")
-
-        if choice == '5':
-            print("Exiting calculator...")
-            break
-
-        try:
-            num1 = float(input("Enter first number: "))
-            num2 = float(input("Enter second number: "))
-        except ValueError:
-            print("Invalid number! Try again.")
-            continue
-
-        if choice == '1':
-            print("Result:", num1 + num2)
-        elif choice == '2':
-            print("Result:", num1 - num2)
-        elif choice == '3':
-            print("Result:", num1 * num2)
-        elif choice == '4':
-            if num2 == 0:
-                print("Error: Division by zero")
-            else:
-                print("Result:", num1 / num2)
-        else:
-            print("Invalid choice!")
-
-calculate() 
+print(f"Area of the circle: {area:.2f}")
+print(f"Perimeter of the circle: {perimeter:.2f}")
