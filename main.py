@@ -1,13 +1,7 @@
-import math
-def circle_properties(radius):
-    # Calculate area using formula: πr²
-    area = math.pi * radius ** 2
-    # Calculate perimeter (circumference) using formula: 2πr
-    perimeter = 2 * math.pi * radius
-    return area, perimeter
-# Example usage
-r = float(input("Enter the radius of the circle: "))
-area, perimeter = circle_properties(r)
-
-print(f"Area of the circle: {area:.2f}")
-print(f"Perimeter of the circle: {perimeter:.2f}")
+d = {1:10, 2:20, 3:30, 4:40, 5:50, 6:60}
+print(d[1])
+print(d[2])
+print(d[3])
+print(d[4])
+print(d[5])
+print(d[6])
