@@ -1,7 +1,19 @@
-d = {1:10, 2:20, 3:30, 4:40, 5:50, 6:60}
-print(d[1])
-print(d[2])
-print(d[3])
-print(d[4])
-print(d[5])
-print(d[6])
+def is_disarium(num):
+    # Convert number to string to access digits with positions
+    digits = str(num)
+    length = len(digits)
+    
+    # Calculate sum of digits powered by their positions
+    total = 0
+    for i in range(length):
+        total += int(digits[i]) ** (i + 1)
+    
+    # Check if sum equals the original number
+    return total == num
+
+# Main program
+number = int(input("Enter a number: "))
+if is_disarium(number):
+    print(number, "is a Disarium number.")
+else:
+    print(number, "is not a Disarium number.")
