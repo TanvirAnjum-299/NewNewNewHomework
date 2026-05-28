@@ -1,19 +1,73 @@
-def is_disarium(num):
-    # Convert number to string to access digits with positions
-    digits = str(num)
-    length = len(digits)
-    
-    # Calculate sum of digits powered by their positions
-    total = 0
-    for i in range(length):
-        total += int(digits[i]) ** (i + 1)
-    
-    # Check if sum equals the original number
-    return total == num
+# importing the module
+import sys
 
-# Main program
-number = int(input("Enter a number: "))
-if is_disarium(number):
-    print(number, "is a Disarium number.")
-else:
-    print(number, "is not a Disarium number.")
+# this function will be the first to run as soon as the main function executes
+def initial_slambook():
+    rows, cols = int(input("Please enter number of yours: ")), 5
+
+    # We are collecting the initial number of contacts the user wants to have in the
+    # phonebook already. User may also enter 0 if he doesn't wish to enter any.
+    slam_book = []
+    print(slam_book)
+
+    for i in range(rows):
+        print("\nEnter contact %d details in the following order (ONLY): " % (i+1))
+        print("NOTE: * indicates mandatory fields")
+        print ("………………………………………………………………………………")
+
+        temp = []
+        for j in range(cols):
+            # We have taken the conditions for values of j only for the personalized fields
+            # such as name, number, e-mail id, dob, category etc
+            if j == 0:
+                temp.append(str(input("Enter name*: ")))
+                # We need to check if the user has left the name empty
+                # name & number are mandatory fields.
+                # So implement a condition to check as below.
+                if temp[j] == '' or temp[j] == ' ':
+                    sys.exit(
+                        "Name is a mandatory field. Process exiting due to blank field..."
+                    )
+                # This will exit the process if a blank field is encountered.
+
+            if j == 1:
+                temp.append(int(input("Enter number*: ")))
+                # We do not need to check if user has entered the number because int automatically
+                # takes care of it. Int value cannot accept a blank as that counts as a string.
+                # So process automatically exits without us using the sys package.
+
+            if j == 2:
+                temp.append(str(input("Enter something about your friend: ")))
+                # Even if this field is left as blank, None will take the blank's place
+                if temp[j] == '' or temp[j] == ' ':
+                    temp[j] = None
+
+            if j == 3:
+                temp.append(str(input("Enter date of birth(dd/mm/yy): ")))
+                # Whatever format the user enters dob in, it won't make
+                if temp[j] == '' or temp[j] == ' ':
+                    # Even if this field is left as blank, None will take the blank's place
+                    temp[j] = None
+
+            if j == 4:
+                temp.append(
+                    str(input("Enter category(Family/Friends/Work/Others): "))
+                )
+                # Even if this field is left as blank, None will take the blank's place
+
+                if temp[j] == '' or temp[j] == ' ':
+                    temp[j] = None
+
+        slam_book.append(temp)
+        # By this step we are appending a list temp into a list phone_book
+        # That means phone_book is a 2-D array and temp is a 1-D array
+
+    print(slam_book)
+    return slam_book
+
+def menu():
+    # We created this simple menu function for
+    # code reusability & also for an interactive console
+    # Menu func will only execute when called
+    print("**********************************************************************")
+    
