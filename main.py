@@ -1,17 +1,23 @@
-# Read mode
-with open("data.txt", "r") as f:
-    content = f.read()
-    print(content)
+# Step 1: Open file in write mode
+f = open("example.txt", "w")
 
-# Write mode
-with open("data.txt", "w") as f:
-    f.write("Hello, Ayub!\n")
+# Step 2: Write data
+f.write("This is Part 2 of File Handling.\n")
 
-# Append mode
-with open("data.txt", "a") as f:
-    f.write("Adding more lines...\n")
+# Step 3: Append more data
+f = open("example.txt", "a")
+f.write("Appending new content...\n")
 
-# Read + Write mode
-with open("data.txt", "r+") as f:
-    old = f.read()
-    f.write("\nNew content after reading.")
+# Step 4: Read the file
+f = open("example.txt", "r")
+print(f.read())
+
+# Step 5: Check cursor position
+print("Cursor at:", f.tell())
+
+# Step 6: Reset cursor to start
+f.seek(0)
+print("After seek:", f.read())
+
+# Step 7: Close file
+f.close()
