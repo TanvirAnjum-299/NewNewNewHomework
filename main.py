@@ -1,23 +1,47 @@
-# Step 1: Open file in write mode
-f = open("example.txt", "w")
+# Basic Calculator Using Python
 
-# Step 2: Write data
-f.write("This is Part 2 of File Handling.\n")
+# Step 1: Define functions
+def add(x, y):
+    return x + y
 
-# Step 3: Append more data
-f = open("example.txt", "a")
-f.write("Appending new content...\n")
+def subtract(x, y):
+    return x - y
 
-# Step 4: Read the file
-f = open("example.txt", "r")
-print(f.read())
+def multiply(x, y):
+    return x * y
 
-# Step 5: Check cursor position
-print("Cursor at:", f.tell())
+def divide(x, y):
+    if y == 0:
+        return "Error! Division by zero."
+    return x / y
 
-# Step 6: Reset cursor to start
-f.seek(0)
-print("After seek:", f.read())
+# Step 2: Main loop
+while True:
+    print("\n--- Basic Calculator ---")
+    print("1. Add")
+    print("2. Subtract")
+    print("3. Multiply")
+    print("4. Divide")
+    print("5. Exit")
 
-# Step 7: Close file
-f.close()
+    choice = input("Enter choice (1-5): ")
+
+    if choice == '5':
+        print("Exiting calculator. Goodbye!")
+        break
+
+    # Step 3: Input numbers
+    num1 = float(input("Enter first number: "))
+    num2 = float(input("Enter second number: "))
+
+    # Step 4: Conditional logic
+    if choice == '1':
+        print("Result:", add(num1, num2))
+    elif choice == '2':
+        print("Result:", subtract(num1, num2))
+    elif choice == '3':
+        print("Result:", multiply(num1, num2))
+    elif choice == '4':
+        print("Result:", divide(num1, num2))
+    else:
+        print("Invalid choice! Please try again.")
