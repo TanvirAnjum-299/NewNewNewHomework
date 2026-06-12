@@ -1,47 +1,44 @@
-# Basic Calculator Using Python
+class Quiz:
+    def __init__(self, questions):
+        # Constructor initializes questions and score
+        self.questions = questions
+        self.score = 0
 
-# Step 1: Define functions
-def add(x, y):
-    return x + y
+    def ask_question(self, question, answer):
+        # Function to ask a question and check answer
+        user_answer = input(question + " ")
+        if user_answer.lower() == answer.lower():
+            print("✅ Correct!")
+            self.score += 1
+        else:
+            print("❌ Wrong! The correct answer was:", answer)
 
-def subtract(x, y):
-    return x - y
+    def start(self):
+        # Loop through all questions
+        for q, a in self.questions:
+            self.ask_question(q, a)
+        self.final_score()
 
-def multiply(x, y):
-    return x * y
+    def final_score(self):
+        # Conditional feedback based on score
+        print(f"\nYour final score is {self.score}/{len(self.questions)}")
+        if self.score == len(self.questions):
+            print("🎉 Excellent! Full marks!")
+        elif self.score >= len(self.questions) // 2:
+            print("👍 Good job, keep practicing!")
+        else:
+            print("📚 Needs more practice, don’t give up!")
 
-def divide(x, y):
-    if y == 0:
-        return "Error! Division by zero."
-    return x / y
+# -------------------------------
+# Example Questions (you can add more)
+questions = [
+    ("What is the capital of Bangladesh?", "Dhaka"),
+    ("Which keyword is used to define a function in Python?", "def"),
+    ("What does OOP stand for?", "Object Oriented Programming"),
+    ("Which loop is used when you know the number of iterations?", "for"),
+    ("Which statement is used for decision making in Python?", "if")
+]
 
-# Step 2: Main loop
-while True:
-    print("\n--- Basic Calculator ---")
-    print("1. Add")
-    print("2. Subtract")
-    print("3. Multiply")
-    print("4. Divide")
-    print("5. Exit")
-
-    choice = input("Enter choice (1-5): ")
-
-    if choice == '5':
-        print("Exiting calculator. Goodbye!")
-        break
-
-    # Step 3: Input numbers
-    num1 = float(input("Enter first number: "))
-    num2 = float(input("Enter second number: "))
-
-    # Step 4: Conditional logic
-    if choice == '1':
-        print("Result:", add(num1, num2))
-    elif choice == '2':
-        print("Result:", subtract(num1, num2))
-    elif choice == '3':
-        print("Result:", multiply(num1, num2))
-    elif choice == '4':
-        print("Result:", divide(num1, num2))
-    else:
-        print("Invalid choice! Please try again.")
+# Create Quiz object and start
+quiz = Quiz(questions)
+quiz.start()
